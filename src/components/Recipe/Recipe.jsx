@@ -11,6 +11,8 @@ import {
 	RecipeDesc,
 } from "./RecipeStyle";
 
+import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
+
 const Recipe = ({ recipe }) => {
 	const publicFolder = "http://localhost:5000/images/";
 	return (
@@ -45,6 +47,10 @@ const Recipe = ({ recipe }) => {
 
 				<span style={{ color: "black" }}>Author: {recipe.username}</span>
 				<RecipeDate>{new Date(recipe.createdAt).toDateString()}</RecipeDate>
+				<div style={{ color: "black" }}>
+					<FaRegThumbsUp />
+					{recipe.likes?.length}
+				</div>
 			</RecipeInfo>
 			<RecipeDesc>{recipe.description}</RecipeDesc>
 		</Container>

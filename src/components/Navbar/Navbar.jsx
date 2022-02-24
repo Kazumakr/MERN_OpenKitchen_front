@@ -67,7 +67,7 @@ const Navbar = () => {
 				) : (
 					<NavList>
 						<NavLink to="/login">Login</NavLink>
-						<NavLink to="/register">Register</NavLink>
+						<NavLink to="/register">SignUp</NavLink>
 					</NavList>
 				)}
 				{/* <i className="topSearchIcon fas fa-search"></i> */}

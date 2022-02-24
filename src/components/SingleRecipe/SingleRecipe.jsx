@@ -1,7 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../context/Context";
-import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
+import {
+	FaTrashAlt,
+	FaRegEdit,
+	FaThumbsUp,
+	FaRegThumbsUp,
+} from "react-icons/fa";
 
 import {
 	Container,
@@ -28,9 +33,7 @@ const SingleRecipe = () => {
 	const [description, setDescription] = useState("");
 	const [updateMode, setUpdateMode] = useState(false);
 	const [comment, setComment] = useState("");
-	const [comments, setComments] = useState([]);
-	const [data, setData] = useState([]);
-
+	const [isLiked, setIsLiked] = useState(false);
 	useEffect(() => {
 		axios
 			.get("/recipes/" + path)
@@ -72,36 +75,39 @@ const SingleRecipe = () => {
 
 	const handleComment = async () => {
 		await axios
-			.post(`/recipes/${recipe._id}/comments`, {
-				author: user.username,
-				comment,
+			.put(`/recipes/${recipe._id}/comments`, {
+				comment: comment,
+				username: user.username,
+				userId: user._id,
 			})
 			.then((res) => {
 				console.log("comment submit");
+				setRecipe(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
-	const handleCommentGet = async () => {
+	const handleLikes = async () => {
 		await axios
-			.get(`/recipes/${recipe._id}/comments`)
+			.put(`/recipes/${recipe._id}/likes`, { userId: user._id })
 			.then((res) => {
-				// setComments(res.data);
-				console.log(res.data);
-				console.log(comments);
+				console.log("res", res);
+				setIsLiked(true);
+				setRecipe(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
-
-	const handleLike = async () => {
+	const handleUnlikes = async () => {
 		await axios
-			.post(`/recipes/${recipe._id}/like`, {
-				liker: user.username,
+			.put(`/recipes/${recipe._id}/unlikes`, { userId: user._id })
+			.then((res) => {
+				console.log(res);
+				setIsLiked(false);
+				setRecipe(res.data);
 			})
-			.then((res) => {})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -129,10 +135,6 @@ const SingleRecipe = () => {
 						{title}
 						{recipe.username === user?.username && (
 							<Edit>
-								{/* <button onClick={() => setUpdateMode(true)}>EDIT</button>
-								<button onClick={handleDelete}>DELETE</button> */}
-								{/* <i className="singlePostIcon far fa-edit"></i>
-						<i className="singlePostIcon far fa-trash-alt"></i> */}
 								<FaRegEdit
 									style={{ color: "blue", fontSize: "24px" }}
 									onClick={() => setUpdateMode(true)}
@@ -164,27 +166,33 @@ const SingleRecipe = () => {
 				)}
 				{updateMode && <button onClick={handleUpdate}>Update</button>}
 			</Wrapper>
-			{/* <button onClick={handleLike}>
-				Like
-				<span>{recipe.likes.length()}</span>
-			</button>
+			{isLiked ? (
+				<FaThumbsUp onClick={handleUnlikes} />
+			) : (
+				<FaRegThumbsUp onClick={handleLikes} />
+			)}
+			<span>{recipe.likes?.length}</span>
 			<div>
 				<form>
 					<div>
 						<textarea
 							placeholder="Leave a comment here"
 							rows="4"
-							// name="comment"
 							onChange={(event) => setComment(event.target.value)}
 						/>
-						{comment}
 					</div>
 					<div>
 						<button onClick={handleComment}>Submit</button>
 					</div>
 				</form>
 			</div>
-			<button onClick={handleCommentGet}>Comment get</button> */}
+			{recipe.comments?.map((item, index) => (
+				<div key={index}>
+					<span>User: {item.postedByName}</span>
+					<br />
+					<span>Comment: {item.comment}</span>
+				</div>
+			))}
 		</Container>
 	);
 };

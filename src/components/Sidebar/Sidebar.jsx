@@ -51,7 +51,7 @@ const Sidebar = () => {
 				</SidebarList>
 			</SidebarItem>
 			<SidebarItem>
-				<SidebarTitle>Popular User</SidebarTitle>
+				<SidebarTitle>Users</SidebarTitle>
 				<SidebarList>
 					{users.map((user, index) => (
 						<SidebarListItem key={index}>

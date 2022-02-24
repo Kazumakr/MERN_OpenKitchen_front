@@ -25,7 +25,7 @@ const Register = () => {
 
 	return (
 		<Container>
-			<Title>Register</Title>
+			<Title>SignUp</Title>
 			{error && (
 				<span style={{ color: "red", marginTop: "10px" }}>
 					Something went wrong
@@ -50,7 +50,7 @@ const Register = () => {
 					placeholder="Password"
 					onChange={(event) => setPassword(event.target.value)}
 				/>
-				<Button type="submit">Register</Button>
+				<Button type="submit">SignUp</Button>
 			</Form>
 			<Link to="/login">
 				<Button>Login</Button>
