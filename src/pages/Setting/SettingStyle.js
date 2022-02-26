@@ -5,7 +5,6 @@ export const Container = styled.div`
 	justify-content: center;
 `;
 export const Wrapper = styled.div`
-	/* flex: 9; */
 	width: 50vw;
 	padding: 20px;
 `;

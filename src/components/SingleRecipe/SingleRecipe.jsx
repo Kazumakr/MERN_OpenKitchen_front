@@ -180,70 +180,68 @@ const SingleRecipe = () => {
 					alt=""
 				/>
 				{updateMode ? (
-					<Input
-						type="text"
-						value={title}
-						onChange={(event) => setTitle(event.target.value)}
-					/>
+					<>
+						<Input
+							type="text"
+							value={title}
+							onChange={(event) => setTitle(event.target.value)}
+						/>
+						<FormGroupCheck>
+							{categories.map((category, index) => (
+								<div key={index}>
+									<Checkbox
+										type="checkbox"
+										value={category.name}
+										onChange={(event) => handleOnChange(event.target.value)}
+									/>
+									{category.name}
+									<br />
+								</div>
+							))}
+						</FormGroupCheck>
+						<Textarea
+							value={description}
+							onChange={(event) => setDescription(event.target.value)}
+						/>
+						<UpdateButton onClick={handleUpdate}>Update</UpdateButton>
+					</>
 				) : (
-					<Title>
-						{title}
-						{recipe.username === user?.username && (
-							<Edit>
-								<FaRegEdit
-									style={{ color: "blue", fontSize: "24px" }}
-									onClick={() => setUpdateMode(true)}
-								/>
-								<FaTrashAlt
-									style={{ color: "red", fontSize: "24px" }}
-									onClick={handleDelete}
-								/>
-							</Edit>
-						)}
-					</Title>
-				)}
-				<Info>
-					<span>
-						Author:
-						<Author>
-							<Link to={`/?user=${recipe.username}`}>{recipe.username}</Link>
-						</Author>
-					</span>
-					<span>{new Date(recipe.createdAt).toDateString()}</span>
-				</Info>
-				{updateMode ? (
-					<FormGroupCheck>
-						{categories.map((category, index) => (
-							<div key={index}>
-								<Checkbox
-									type="checkbox"
-									value={category.name}
-									onChange={(event) => handleOnChange(event.target.value)}
-								/>
-								{category.name}
-								<br />
-							</div>
-						))}
-					</FormGroupCheck>
-				) : (
-					<RecipeCategories>
-						{category?.map((category, index) => (
-							<Category key={index}>{category}</Category>
-						))}
-					</RecipeCategories>
+					<>
+						<Title>
+							{title}
+							{recipe.username === user?.username && (
+								<Edit>
+									<FaRegEdit
+										style={{ color: "blue", fontSize: "24px" }}
+										onClick={() => setUpdateMode(true)}
+									/>
+									<FaTrashAlt
+										style={{ color: "red", fontSize: "24px" }}
+										onClick={handleDelete}
+									/>
+								</Edit>
+							)}
+						</Title>
+						<Info>
+							<span>
+								Author:
+								<Author>
+									<Link to={`/?user=${recipe.username}`}>
+										{recipe.username}
+									</Link>
+								</Author>
+							</span>
+							<span>{new Date(recipe.createdAt).toDateString()}</span>
+						</Info>
+						<RecipeCategories>
+							{category?.map((category, index) => (
+								<Category key={index}>{category}</Category>
+							))}
+						</RecipeCategories>
+						<Desc>{description}</Desc>
+					</>
 				)}
 
-				{updateMode ? (
-					<Textarea
-						value={description}
-						onChange={(event) => setDescription(event.target.value)}
-					/>
-				) : (
-					<Desc>{description}</Desc>
-				)}
-				{updateMode && (
-					<UpdateButton onClick={handleUpdate}>Update</UpdateButton>
-				)}
 				<div>
 					{isLiked ? (
 						<FaThumbsUp onClick={handleUnlikes} style={{ cursor: "pointer" }} />

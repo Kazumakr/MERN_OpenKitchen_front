@@ -25,7 +25,7 @@ const Home = () => {
 			<Hero />
 			<Container>
 				<Recipes recipes={recipes} />
-				<Sidebar />
+				<Sidebar recipes={recipes} />
 			</Container>
 		</>
 	);

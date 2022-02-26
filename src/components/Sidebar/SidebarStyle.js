@@ -68,3 +68,12 @@ export const CategoryLink = styled(Link)`
 		opacity: 0.7;
 	}
 `;
+
+export const Input = styled.input`
+	font-family: FontAwesome;
+	padding: 10px;
+	width: 250px;
+	border-radius: 5px;
+	border: none;
+	background-color: #e8e8e8;
+`;

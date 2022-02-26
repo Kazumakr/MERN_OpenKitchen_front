@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
 	Container,
@@ -10,13 +10,15 @@ import {
 	Img,
 	Username,
 	CategoryLink,
+	Input,
 } from "./SidebarStyle";
 import axios from "axios";
 // const PublicFolder = "http://localhost:5000/images/";
 
-const Sidebar = () => {
+const Sidebar = ({ recipes }) => {
 	const [categories, setCategories] = useState([]);
 	const [users, setUsers] = useState([]);
+	const navigate = useNavigate();
 	useEffect(() => {
 		axios
 			.get("/categories")
@@ -36,10 +38,22 @@ const Sidebar = () => {
 				console.log(err);
 			});
 	}, []);
+
+	const handleChange = (event) => {
+		navigate(`/?search=${event.target.value}`);
+	};
 	return (
 		<Container>
 			<SidebarItem>
-				<SidebarTitle>CATEGORIES</SidebarTitle>
+				<SidebarTitle>Search Recipes</SidebarTitle>
+				<Input
+					type="text"
+					placeholder="&#xF002; Title or Description"
+					onChange={handleChange}
+				/>
+			</SidebarItem>
+			<SidebarItem>
+				<SidebarTitle>Categories</SidebarTitle>
 				<SidebarList>
 					{categories.map((category, index) => (
 						<SidebarListItem key={index}>

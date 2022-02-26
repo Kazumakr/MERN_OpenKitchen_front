@@ -25,12 +25,7 @@ const Recipe = ({ recipe }) => {
 				}
 			/>
 			<RecipeInfo>
-				{/* <Link
-					style={{ color: "black", margin: "10px" }}
-					to={`/recipes/${recipe._id}`}
-				> */}
 				<RecipeTitle>{recipe.title}</RecipeTitle>
-				{/* </Link> */}
 				<RecipeCategories>
 					{recipe.categories.map((category, index) => (
 						<Category key={index}>{category}</Category>
