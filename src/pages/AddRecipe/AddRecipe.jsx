@@ -37,6 +37,7 @@ const AddRecipe = () => {
 		event.preventDefault();
 		const newRecipe = {
 			username: user.username,
+			userId: user._id,
 			title,
 			description,
 			categories: checkedCategories,

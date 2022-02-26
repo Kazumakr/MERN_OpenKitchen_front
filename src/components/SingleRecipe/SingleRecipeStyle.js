@@ -122,3 +122,15 @@ export const Category = styled.span`
 	padding: 5px;
 	margin-right: 5px;
 `;
+
+export const FormGroupCheck = styled.div`
+	/* margin-left: 150px; */
+	margin: 10px 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/* align-items: flex-start; */
+`;
+export const Checkbox = styled.input`
+	margin-left: 10px;
+`;

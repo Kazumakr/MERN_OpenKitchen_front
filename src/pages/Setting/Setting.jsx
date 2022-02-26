@@ -23,6 +23,7 @@ const Setting = () => {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [bio, setBio] = useState("");
 	const [success, setSuccess] = useState(false);
 
 	const { user, dispatch } = useContext(Context);
@@ -32,6 +33,7 @@ const Setting = () => {
 		setUsername(user.username);
 		setEmail(user.email);
 		setPassword(user.password);
+		setBio(user.bio);
 	}, []);
 
 	const handleSubmit = async (event) => {
@@ -42,6 +44,7 @@ const Setting = () => {
 			username,
 			email,
 			password,
+			bio,
 		};
 		if (file) {
 			const data = new FormData();
@@ -140,7 +143,15 @@ const Setting = () => {
 					<Input
 						type="password"
 						name="password"
+						placeholder="****"
 						onChange={(event) => setPassword(event.target.value)}
+					/>
+					<Label>Bio</Label>
+					<Input
+						type="text"
+						name="bio"
+						value={bio}
+						onChange={(event) => setBio(event.target.value)}
 					/>
 					<ButtonContainer>
 						<UpdateButton type="submit">Update</UpdateButton>

@@ -35,7 +35,7 @@ const Navbar = () => {
 					<NavLink to="/contact">Contact</NavLink>
 					{user && (
 						<>
-							<NavLink to={`/?user=${user.username}`}>My Recipe</NavLink>
+							<NavLink to={`/userrecipe/${user._id}`}>My Recipe</NavLink>
 							<NavLink to="/addrecipe">Add Recipe</NavLink>
 							<NavLink to="/" onClick={handleLogout}>
 								Logout

@@ -8,6 +8,7 @@ import Setting from "./pages/Setting/Setting";
 import SingleRecipePage from "./pages/SingleRecipe/SingleRecipePage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import Footer from "./components/Footer/Footer";
+import UserRecipe from "./pages/UserRecipe/UserRecipe";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
@@ -20,6 +21,7 @@ const App = () => {
 			<Navbar />
 			<Routes>
 				<Route exact path="/" element={<Home />} />
+				<Route path="/userrecipe/:id" element={<UserRecipe />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/recipes" element={<Home />} />

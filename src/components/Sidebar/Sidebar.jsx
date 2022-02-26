@@ -56,7 +56,7 @@ const Sidebar = () => {
 					{users.map((user, index) => (
 						<SidebarListItem key={index}>
 							<Link
-								to={`/?user=${user.username}`}
+								to={`/userrecipe/${user._id}`}
 								style={{ display: "flex", alignItems: "center" }}
 							>
 								<Img

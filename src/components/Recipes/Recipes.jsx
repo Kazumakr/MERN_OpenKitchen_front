@@ -7,7 +7,7 @@ const Recipes = ({ recipes }) => {
 	return (
 		<Container>
 			{recipes.map((recipe, index) => (
-				<Link key={index} to={`recipes/${recipe._id}`}>
+				<Link key={index} to={`/recipes/${recipe._id}`}>
 					<Recipe recipe={recipe} />
 				</Link>
 			))}

@@ -27,6 +27,8 @@ import {
 	UpdateButton,
 	RecipeCategories,
 	Category,
+	FormGroupCheck,
+	Checkbox,
 } from "./SingleRecipeStyle";
 
 const axios = require("axios");
@@ -38,11 +40,27 @@ const SingleRecipe = () => {
 	const { user } = useContext(Context);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
+	const [category, setCategory] = useState([]);
 	const [updateMode, setUpdateMode] = useState(false);
 	const [comment, setComment] = useState("");
 	const [isLiked, setIsLiked] = useState(false);
 	const [userImage, setUserImage] = useState("");
+
+	const [checkedCategories, setCheckedCategories] = useState([]);
+	const [categories, setCategories] = useState([]);
 	// const publicFolder = "http://localhost:5000/images/";
+
+	useEffect(() => {
+		axios
+			.get("/categories")
+			.then((res) => {
+				setCategories(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
 	useEffect(() => {
 		axios
 			.get("/recipes/" + path)
@@ -50,6 +68,7 @@ const SingleRecipe = () => {
 				setRecipe(res.data);
 				setTitle(res.data.title);
 				setDescription(res.data.description);
+				setCategory(res.data.categories);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -60,6 +79,14 @@ const SingleRecipe = () => {
 		await axios
 			.delete(`/recipes/${recipe._id}`, { data: { username: user.username } })
 			.then((res) => {
+				if (recipe.photo) {
+					axios
+						.delete(`/image/${recipe.photo}`)
+						.then()
+						.catch((err) => {
+							console.log(err);
+						});
+				}
 				window.location.replace("/");
 			})
 			.catch((err) => {
@@ -73,9 +100,11 @@ const SingleRecipe = () => {
 				username: user.username,
 				title,
 				description,
+				categories: checkedCategories,
 			})
 			.then((res) => {
 				setUpdateMode(false);
+				setCategory(checkedCategories);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -120,6 +149,16 @@ const SingleRecipe = () => {
 			.catch((err) => {
 				console.log(err);
 			});
+	};
+
+	const handleOnChange = (categoryName) => {
+		if (checkedCategories.some((category) => category === categoryName)) {
+			setCheckedCategories(
+				checkedCategories.filter((category) => category !== categoryName)
+			);
+		} else {
+			setCheckedCategories([...checkedCategories, categoryName]);
+		}
 	};
 
 	const handleGetCommentUser = async (username) => {
@@ -172,11 +211,28 @@ const SingleRecipe = () => {
 					</span>
 					<span>{new Date(recipe.createdAt).toDateString()}</span>
 				</Info>
-				<RecipeCategories>
-					{recipe.categories?.map((category, index) => (
-						<Category key={index}>{category}</Category>
-					))}
-				</RecipeCategories>
+				{updateMode ? (
+					<FormGroupCheck>
+						{categories.map((category, index) => (
+							<div key={index}>
+								<Checkbox
+									type="checkbox"
+									value={category.name}
+									onChange={(event) => handleOnChange(event.target.value)}
+								/>
+								{category.name}
+								<br />
+							</div>
+						))}
+					</FormGroupCheck>
+				) : (
+					<RecipeCategories>
+						{category?.map((category, index) => (
+							<Category key={index}>{category}</Category>
+						))}
+					</RecipeCategories>
+				)}
+
 				{updateMode ? (
 					<Textarea
 						value={description}
