@@ -34,19 +34,6 @@ const Contact = () => {
 	};
 	return (
 		<Container>
-			{/* {!sent ? (
-				<form onSubmit={handleSend}>
-					<input
-						type="text"
-						value={text}
-						onChange={(event) => setText(event.target.value)}
-					/>
-					<button type="submit">Send Email</button>
-				</form>
-			) : (
-				<h1>Email Sent</h1>
-			)} */}
-
 			<Title>Contact Us</Title>
 			{!sent ? (
 				<Form onSubmit={handleSend}>

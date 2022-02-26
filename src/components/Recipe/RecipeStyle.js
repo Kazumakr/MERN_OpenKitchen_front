@@ -40,7 +40,8 @@ export const RecipeTitle = styled.span`
 	font-family: "Lato", sans-serif;
 	font-size: 24px;
 	font-weight: 900;
-
+	color: black;
+	margin: 10px;
 	cursor: pointer;
 `;
 export const RecipeDate = styled.span`
@@ -64,4 +65,12 @@ export const RecipeDesc = styled.p`
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
+`;
+
+export const Category = styled.span`
+	background-color: lightgray;
+	border-radius: 10px;
+	color: black;
+	padding: 5px;
+	margin-right: 5px;
 `;

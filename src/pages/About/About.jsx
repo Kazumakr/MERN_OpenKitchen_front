@@ -17,7 +17,7 @@ const About = () => {
 			<Section>
 				<Img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29va2luZ3xlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60" />
 				<DescContainer>
-					<SectionTitle>Title</SectionTitle>
+					<SectionTitle>Share your original recipe</SectionTitle>
 					<Desc>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Consequuntur perferendis cupiditate eaque similique optio soluta
@@ -28,7 +28,7 @@ const About = () => {
 			</Section>
 			<Section>
 				<DescContainer>
-					<SectionTitle>Title</SectionTitle>
+					<SectionTitle>Explore & Learn</SectionTitle>
 					<Desc>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Consequuntur perferendis cupiditate eaque similique optio soluta

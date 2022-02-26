@@ -19,11 +19,7 @@ const AddRecipe = () => {
 	const [description, setDescription] = useState("");
 	const [file, setFile] = useState(null);
 	const [checkedCategories, setCheckedCategories] = useState([]);
-	let checkedCategory = [];
 	const [categories, setCategories] = useState([]);
-	const [checkedState, setCheckedState] = useState(
-		new Array(categories.length).fill(false)
-	);
 	const { user } = useContext(Context);
 
 	useEffect(() => {
@@ -48,7 +44,7 @@ const AddRecipe = () => {
 
 		if (file) {
 			const data = new FormData();
-			const filename = Date.now() + file.name;
+			const filename = file.name;
 			data.append("name", filename);
 			data.append("file", file);
 			newRecipe.photo = filename;
@@ -70,27 +66,11 @@ const AddRecipe = () => {
 	};
 
 	const handleOnChange = (categoryName) => {
-		// const updatedCheckedState = checkedState.map((item, index) =>
-		// 	index === position ? !item : item
-		// );
-
-		// if (checkedCategory.some((category) => category === categoryName)) {
-		// 	checkedCategory = checkedCategory.filter((category) => {
-		// 		return category !== categoryName;
-		// 	});
-		// } else {
-		// 	checkedCategory.push(categoryName);
-
-		// }
 		if (checkedCategories.some((category) => category === categoryName)) {
-			// checkedCategory = checkedCategory.filter((category) => {
-			// 	return category.name !== categoryName;
-			// });
 			setCheckedCategories(
 				checkedCategories.filter((category) => category !== categoryName)
 			);
 		} else {
-			// checkedCategory.push({ name: categoryName });
 			setCheckedCategories([...checkedCategories, categoryName]);
 		}
 	};
@@ -124,16 +104,15 @@ const AddRecipe = () => {
 				<Label>Category</Label>
 				<FormGroupCheck>
 					{categories.map((category, index) => (
-						<>
+						<div key={index}>
 							<Checkbox
-								key={index}
 								type="checkbox"
 								value={category.name}
 								onChange={(event) => handleOnChange(event.target.value)}
 							/>
 							{category.name}
 							<br />
-						</>
+						</div>
 					))}
 				</FormGroupCheck>
 

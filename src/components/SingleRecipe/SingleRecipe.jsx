@@ -19,6 +19,14 @@ import {
 	Desc,
 	Input,
 	Textarea,
+	Form,
+	CommentInput,
+	CommentButton,
+	UserImg,
+	CommentContainer,
+	UpdateButton,
+	RecipeCategories,
+	Category,
 } from "./SingleRecipeStyle";
 
 const axios = require("axios");
@@ -27,13 +35,14 @@ const SingleRecipe = () => {
 	const location = useLocation();
 	const path = location.pathname.split("/")[2];
 	const [recipe, setRecipe] = useState({});
-	const publicFolder = "http://localhost:5000/images/";
 	const { user } = useContext(Context);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [updateMode, setUpdateMode] = useState(false);
 	const [comment, setComment] = useState("");
 	const [isLiked, setIsLiked] = useState(false);
+	const [userImage, setUserImage] = useState("");
+	// const publicFolder = "http://localhost:5000/images/";
 	useEffect(() => {
 		axios
 			.get("/recipes/" + path)
@@ -113,14 +122,21 @@ const SingleRecipe = () => {
 			});
 	};
 
+	const handleGetCommentUser = async (username) => {
+		await axios
+			.get("/users/byusername", { data: { username: username } })
+			.then((res) => setUserImage(res.data.profilePicture))
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<Container>
 			<Wrapper>
 				<Img
 					src={
 						recipe.photo
-							? publicFolder + recipe.photo
-							: publicFolder + "NoFoodImage.jpg"
+							? "http://localhost:5000/api/image/" + recipe.photo
+							: "http://localhost:5000/api/image/NoFoodImage.jpg"
 					}
 					alt=""
 				/>
@@ -156,6 +172,11 @@ const SingleRecipe = () => {
 					</span>
 					<span>{new Date(recipe.createdAt).toDateString()}</span>
 				</Info>
+				<RecipeCategories>
+					{recipe.categories?.map((category, index) => (
+						<Category key={index}>{category}</Category>
+					))}
+				</RecipeCategories>
 				{updateMode ? (
 					<Textarea
 						value={description}
@@ -164,35 +185,59 @@ const SingleRecipe = () => {
 				) : (
 					<Desc>{description}</Desc>
 				)}
-				{updateMode && <button onClick={handleUpdate}>Update</button>}
-			</Wrapper>
-			{isLiked ? (
-				<FaThumbsUp onClick={handleUnlikes} />
-			) : (
-				<FaRegThumbsUp onClick={handleLikes} />
-			)}
-			<span>{recipe.likes?.length}</span>
-			<div>
-				<form>
-					<div>
-						<textarea
-							placeholder="Leave a comment here"
-							rows="4"
+				{updateMode && (
+					<UpdateButton onClick={handleUpdate}>Update</UpdateButton>
+				)}
+				<div>
+					{isLiked ? (
+						<FaThumbsUp onClick={handleUnlikes} style={{ cursor: "pointer" }} />
+					) : (
+						<FaRegThumbsUp
+							onClick={handleLikes}
+							style={{ cursor: "pointer" }}
+						/>
+					)}
+					<span>{recipe.likes?.length}</span>
+				</div>
+				<h3>Comments</h3>
+				<CommentContainer>
+					<UserImg
+						src={
+							user?.profilePicture
+								? "http://localhost:5000/api/image/" + user.profilePicture
+								: "http://localhost:5000/api/image/NoImage.png"
+						}
+						alt=""
+					/>
+					<Form>
+						<CommentInput
+							type="text"
+							placeholder="Leave a comment here..."
 							onChange={(event) => setComment(event.target.value)}
 						/>
-					</div>
-					<div>
-						<button onClick={handleComment}>Submit</button>
-					</div>
-				</form>
-			</div>
-			{recipe.comments?.map((item, index) => (
-				<div key={index}>
-					<span>User: {item.postedByName}</span>
-					<br />
-					<span>Comment: {item.comment}</span>
-				</div>
-			))}
+
+						<CommentButton onClick={handleComment}>Comment</CommentButton>
+					</Form>
+				</CommentContainer>
+				{recipe.comments?.map((item, index) => (
+					<CommentContainer key={index}>
+						{/* {handleGetCommentUser(item.postedByName)} */}
+						<UserImg
+							src={
+								userImage
+									? "http://localhost:5000/api/image/" + userImage
+									: "http://localhost:5000/api/image/NoImage.png"
+							}
+							alt=""
+						/>
+						<div>
+							<span style={{ fontWeight: "bold" }}>{item.postedByName}</span>
+							<br />
+							<span>{item.comment}</span>
+						</div>
+					</CommentContainer>
+				))}
+			</Wrapper>
 		</Container>
 	);
 };

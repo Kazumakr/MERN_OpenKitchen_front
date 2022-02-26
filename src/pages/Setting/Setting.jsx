@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import {
 	Container,
 	Wrapper,
 	TitleContainer,
 	UpdateTitle,
-	DeleteTitle,
 	Form,
 	Label,
 	ProfileContainer,
@@ -19,6 +17,7 @@ import {
 import { Context } from "../../context/Context";
 import { BsPlusCircle } from "react-icons/bs";
 import axios from "axios";
+
 const Setting = () => {
 	const [file, setFile] = useState(null);
 	const [username, setUsername] = useState("");
@@ -27,7 +26,7 @@ const Setting = () => {
 	const [success, setSuccess] = useState(false);
 
 	const { user, dispatch } = useContext(Context);
-	const PublicFolder = "http://localhost:5000/images/";
+	// const PublicFolder = "http://localhost:5000/images/";
 
 	useEffect(() => {
 		setUsername(user.username);
@@ -46,7 +45,7 @@ const Setting = () => {
 		};
 		if (file) {
 			const data = new FormData();
-			const filename = Date.now() + file.name;
+			const filename = file.name;
 			data.append("name", filename);
 			data.append("file", file);
 			updatedUser.profilePicture = filename;
@@ -74,7 +73,7 @@ const Setting = () => {
 			.delete(`/users/${user._id}`, { data: { userId: user._id } })
 			.then((res) => {
 				dispatch({ type: "LOGOUT" });
-				// window.location.replace("/");
+				window.location.replace("/");
 			})
 			.catch((err) => {
 				console.log(err);
@@ -100,12 +99,11 @@ const Setting = () => {
 						) : (
 							<Img
 								src={
-									user.profilePicture ===
-									"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-										? user.profilePicture
-										: PublicFolder + user.profilePicture
+									user.profilePicture
+										? "http://localhost:5000/api/image/" + user.profilePicture
+										: "http://localhost:5000/api/image/NoImage.png"
 								}
-								alt=""
+								alt="profilePicture"
 							/>
 						)}
 						<Label htmlFor="fileInput">
@@ -141,7 +139,6 @@ const Setting = () => {
 					<Label>Password</Label>
 					<Input
 						type="password"
-						// placeholder={password}
 						name="password"
 						onChange={(event) => setPassword(event.target.value)}
 					/>

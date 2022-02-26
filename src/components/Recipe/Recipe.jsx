@@ -5,54 +5,47 @@ import {
 	Img,
 	RecipeInfo,
 	RecipeCategories,
-	RecipeCategory,
 	RecipeTitle,
 	RecipeDate,
 	RecipeDesc,
+	Category,
 } from "./RecipeStyle";
 
-import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
+import { FaRegThumbsUp } from "react-icons/fa";
 
 const Recipe = ({ recipe }) => {
-	const publicFolder = "http://localhost:5000/images/";
+	// const publicFolder = "http://localhost:5000/images/";
 	return (
 		<Container>
 			<Img
 				src={
 					recipe.photo
-						? publicFolder + recipe.photo
-						: publicFolder + "NoFoodImage.jpg"
+						? "http://localhost:5000/api/image/" + recipe.photo
+						: "http://localhost:5000/api/image/NoFoodImage.jpg"
 				}
 			/>
 			<RecipeInfo>
-				<Link
+				{/* <Link
 					style={{ color: "black", margin: "10px" }}
 					to={`/recipes/${recipe._id}`}
-				>
-					<RecipeTitle>{recipe.title}</RecipeTitle>
-				</Link>
+				> */}
+				<RecipeTitle>{recipe.title}</RecipeTitle>
+				{/* </Link> */}
 				<RecipeCategories>
 					{recipe.categories.map((category, index) => (
-						<span>{category}</span>
-						// <Link to={`/recipes?category=${category}`}>
-						// 	<RecipeCategory>{category}</RecipeCategory>
-						// </Link>
+						<Category key={index}>{category}</Category>
 					))}
 				</RecipeCategories>
-				{/* <div>
-					{recipe.categories.map((c) => (
-						<span>{c}</span>
-					))}
-				</div> */}
-
-				<span style={{ color: "black" }}>Author: {recipe.username}</span>
+				<span style={{ color: "black", marginTop: "10px" }}>
+					Author: {recipe.username}
+				</span>
 				<RecipeDate>{new Date(recipe.createdAt).toDateString()}</RecipeDate>
-				<div style={{ color: "black" }}>
-					<FaRegThumbsUp />
-					{recipe.likes?.length}
-				</div>
 			</RecipeInfo>
 			<RecipeDesc>{recipe.description}</RecipeDesc>
+			<div style={{ color: "black", alignSelf: "self-start" }}>
+				<FaRegThumbsUp />
+				{recipe.likes?.length}
+			</div>
 		</Container>
 	);
 };

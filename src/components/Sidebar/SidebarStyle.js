@@ -16,6 +16,7 @@ export const SidebarItem = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 300px;
 `;
 export const SidebarTitle = styled.span`
 	margin: 10px;
@@ -32,9 +33,12 @@ export const SidebarTitle = styled.span`
 export const SidebarList = styled.ul`
 	list-style-type: none;
 	margin-bottom: 30px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
 `;
 export const SidebarListItem = styled.li`
-	display: inline-block;
 	width: 50%;
 	margin-top: 15px;
 

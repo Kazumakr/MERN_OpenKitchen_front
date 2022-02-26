@@ -12,7 +12,7 @@ import {
 	CategoryLink,
 } from "./SidebarStyle";
 import axios from "axios";
-const PublicFolder = "http://localhost:5000/images/";
+// const PublicFolder = "http://localhost:5000/images/";
 
 const Sidebar = () => {
 	const [categories, setCategories] = useState([]);
@@ -61,10 +61,9 @@ const Sidebar = () => {
 							>
 								<Img
 									src={
-										user.profilePicture ===
-										"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-											? user.profilePicture
-											: PublicFolder + user.profilePicture
+										user.profilePicture
+											? "http://localhost:5000/api/image/" + user.profilePicture
+											: "http://localhost:5000/api/image/NoImage.png"
 									}
 								/>
 								<Username>{user.username}</Username>
