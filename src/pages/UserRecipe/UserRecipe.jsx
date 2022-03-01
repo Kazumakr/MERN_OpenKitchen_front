@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Hero from "../../components/Hero/Hero";
 import Recipes from "../../components/Recipes/Recipes";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import axios from "axios";
 import {
 	Container,
@@ -17,7 +15,6 @@ const UserRecipe = () => {
 	const location = useLocation();
 	const path = location.pathname.split("/")[2];
 	const [recipes, setRecipes] = useState([]);
-	const { search } = useLocation();
 	const [user, setUser] = useState([]);
 
 	useEffect(() => {
@@ -51,7 +48,6 @@ const UserRecipe = () => {
 						}
 						alt=""
 					/>
-					{/* <p>{user[0]}</p> */}
 					<UserInfo>
 						<Title>{user.username}</Title>
 						<Desc>{user.bio}</Desc>
@@ -59,7 +55,6 @@ const UserRecipe = () => {
 				</UserContainer>
 				<Hr />
 				<Recipes recipes={recipes} />
-				{/* <Sidebar /> */}
 			</Container>
 		</>
 	);

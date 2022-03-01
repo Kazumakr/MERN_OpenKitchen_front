@@ -48,7 +48,6 @@ const SingleRecipe = () => {
 
 	const [checkedCategories, setCheckedCategories] = useState([]);
 	const [categories, setCategories] = useState([]);
-	// const publicFolder = "http://localhost:5000/images/";
 
 	useEffect(() => {
 		axios
@@ -161,13 +160,6 @@ const SingleRecipe = () => {
 		}
 	};
 
-	const handleGetCommentUser = async (username) => {
-		await axios
-			.get("/users/byusername", { data: { username: username } })
-			.then((res) => setUserImage(res.data.profilePicture))
-			.catch((err) => console.log(err));
-	};
-
 	return (
 		<Container>
 			<Wrapper>
@@ -226,7 +218,7 @@ const SingleRecipe = () => {
 							<span>
 								Author:
 								<Author>
-									<Link to={`/?user=${recipe.username}`}>
+									<Link to={`/userrecipe/${recipe.userId}`}>
 										{recipe.username}
 									</Link>
 								</Author>
@@ -275,7 +267,6 @@ const SingleRecipe = () => {
 				</CommentContainer>
 				{recipe.comments?.map((item, index) => (
 					<CommentContainer key={index}>
-						{/* {handleGetCommentUser(item.postedByName)} */}
 						<UserImg
 							src={
 								userImage

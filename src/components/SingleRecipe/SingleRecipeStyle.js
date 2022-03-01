@@ -1,22 +1,24 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	flex: 9;
 `;
 export const Wrapper = styled.div`
-	width: 800px;
-	/* padding: 20px; */
+	width: 650px;
 	margin: 20px auto;
-	/* padding-left: 100px; */
 	display: flex;
 	flex-direction: column;
+	${tablet({ margin: "20px auto" })}
+	${mobile({ width: "300px", margin: "20px auto" })}
 `;
 export const Img = styled.img`
-	width: 700px;
+	width: 100%;
 	height: 400px;
 	border-radius: 5px;
 	object-fit: cover;
 	margin: 0 auto;
+	${mobile({ width: "300px", height: "100%" })}
 `;
 export const Title = styled.span`
 	margin: 10px;
@@ -30,7 +32,6 @@ export const Info = styled.div`
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
-	/* justify-content: space-between; */
 	font-size: 16px;
 	color: #be9656;
 `;
@@ -45,10 +46,10 @@ export const Desc = styled.p`
 
 export const Input = styled.input`
 	font-size: 30px;
-	/* border: 1px solid blue; */
 	padding: 20px;
 	width: 750px;
 	margin: 10px 0;
+	${tablet({ width: "650px" })}
 `;
 
 export const Textarea = styled.textarea`
@@ -57,6 +58,7 @@ export const Textarea = styled.textarea`
 	height: 500px;
 	font-family: inherit;
 	font-size: 20px;
+	${tablet({ width: "650px", height: "300px" })}
 `;
 export const Form = styled.form`
 	display: flex;
@@ -124,12 +126,10 @@ export const Category = styled.span`
 `;
 
 export const FormGroupCheck = styled.div`
-	/* margin-left: 150px; */
 	margin: 10px 0;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	/* align-items: flex-start; */
 `;
 export const Checkbox = styled.input`
 	margin-left: 10px;

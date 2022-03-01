@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import {
 	Container,
+	PageTitle,
 	Img,
 	Form,
 	FormGroup,
@@ -10,6 +11,7 @@ import {
 	Button,
 	FormGroupCheck,
 	Checkbox,
+	CategoryName,
 } from "./AddRecipeStyle";
 import axios from "axios";
 import { BsPlusCircle } from "react-icons/bs";
@@ -78,7 +80,7 @@ const AddRecipe = () => {
 	return (
 		<Container>
 			<Form onSubmit={handleSubmit}>
-				<h1 style={{ textAlign: "center" }}>Add New Recipe</h1>
+				<PageTitle style={{ textAlign: "center" }}>Add New Recipe</PageTitle>
 				<FormGroup>
 					<Label>Image</Label>
 					{file && <Img src={URL.createObjectURL(file)} alt="" />}
@@ -111,7 +113,7 @@ const AddRecipe = () => {
 								value={category.name}
 								onChange={(event) => handleOnChange(event.target.value)}
 							/>
-							{category.name}
+							<CategoryName>{category.name}</CategoryName>
 							<br />
 						</div>
 					))}
@@ -128,9 +130,7 @@ const AddRecipe = () => {
 					/>
 				</FormGroup>
 				<FormGroup>
-					<Button type="submit" type="submit">
-						Publish
-					</Button>
+					<Button type="submit">Publish</Button>
 				</FormGroup>
 			</Form>
 		</Container>

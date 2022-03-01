@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
 	Container,
 	Img,
@@ -14,7 +13,6 @@ import {
 import { FaRegThumbsUp } from "react-icons/fa";
 
 const Recipe = ({ recipe }) => {
-	// const publicFolder = "http://localhost:5000/images/";
 	return (
 		<Container>
 			<Img

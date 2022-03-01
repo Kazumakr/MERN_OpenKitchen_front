@@ -35,10 +35,10 @@ const Login = () => {
 				<Button type="submit" disabled={isFetching}>
 					Login
 				</Button>
+				<Link to="/register">
+					<Button>SignUp</Button>
+				</Link>
 			</Form>
-			<Link to="/register">
-				<Button>SignUp</Button>
-			</Link>
 		</Container>
 	);
 };

@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
-	height: calc(100vh - 50px);
+	height: calc(100vh - 10px);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -13,12 +14,16 @@ export const Container = styled.div`
 export const Title = styled.span`
 	font-size: 50px;
 	color: white;
+	margin-top: 20px;
+	${tablet({ fontSize: "32px" })}
 `;
 export const Form = styled.form`
-	margin-top: 20px;
+	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 400px;
+	${tablet({ width: "300px", height: "400px" })}
+	${mobile({ width: "250px", height: "400px" })}
 `;
 export const Label = styled.label`
 	margin: 10px 0;
@@ -29,12 +34,14 @@ export const Input = styled.input`
 	background-color: white;
 	border: none;
 	border-radius: 10px;
+	${tablet({ padding: "7px" })}
 `;
 
 export const Textarea = styled.textarea`
 	height: 10vh;
 	padding: 10px;
 	border-radius: 10px;
+	${tablet({ padding: "7px", height: "100px" })}
 `;
 export const Button = styled.button`
 	margin-top: 20px;
@@ -45,7 +52,7 @@ export const Button = styled.button`
 	border: none;
 	border-radius: 10px;
 	text-align: center;
-	width: 400px;
+	width: 100%;
 `;
 
 export const Wrapper = styled.div`
@@ -54,7 +61,6 @@ export const Wrapper = styled.div`
 	align-items: center;
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 10px;
-	/* padding: 200px; */
 	width: 500px;
 	height: 400px;
 `;

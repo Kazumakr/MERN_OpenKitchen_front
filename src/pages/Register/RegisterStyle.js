@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
 	height: calc(100vh - 50px);
@@ -13,12 +14,14 @@ export const Container = styled.div`
 export const Title = styled.span`
 	font-size: 50px;
 	color: white;
+	${mobile({ fontSize: "40px" })}
 `;
 export const Form = styled.form`
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 400px;
+	${mobile({ width: "250px" })}
 `;
 export const Label = styled.label`
 	margin: 10px 0;
@@ -39,5 +42,5 @@ export const Button = styled.button`
 	border: none;
 	border-radius: 10px;
 	text-align: center;
-	width: 400px;
+	width: 100%;
 `;

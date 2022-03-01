@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { tablet } from "../../responsive";
 
 export const Container = styled.div`
 	flex: 3;
@@ -11,6 +12,8 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	${tablet({ display: "none" })}
 `;
 export const SidebarItem = styled.div`
 	display: flex;

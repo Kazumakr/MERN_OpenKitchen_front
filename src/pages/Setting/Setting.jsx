@@ -13,6 +13,7 @@ import {
 	UpdateButton,
 	DeleteButton,
 	ButtonContainer,
+	Textarea,
 } from "./SettingStyle";
 import { Context } from "../../context/Context";
 import { BsPlusCircle } from "react-icons/bs";
@@ -27,14 +28,13 @@ const Setting = () => {
 	const [success, setSuccess] = useState(false);
 
 	const { user, dispatch } = useContext(Context);
-	// const PublicFolder = "http://localhost:5000/images/";
 
 	useEffect(() => {
 		setUsername(user.username);
 		setEmail(user.email);
 		setPassword(user.password);
 		setBio(user.bio);
-	}, []);
+	}, [user]);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -75,6 +75,14 @@ const Setting = () => {
 		await axios
 			.delete(`/users/${user._id}`, { data: { userId: user._id } })
 			.then((res) => {
+				if (user.profilePicture) {
+					axios
+						.delete(`/image/${user.profilePicture}`)
+						.then()
+						.catch((err) => {
+							console.log(err);
+						});
+				}
 				dispatch({ type: "LOGOUT" });
 				window.location.replace("/");
 			})
@@ -147,7 +155,7 @@ const Setting = () => {
 						onChange={(event) => setPassword(event.target.value)}
 					/>
 					<Label>Bio</Label>
-					<Input
+					<Textarea
 						type="text"
 						name="bio"
 						value={bio}

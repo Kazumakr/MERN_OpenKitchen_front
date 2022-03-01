@@ -13,9 +13,8 @@ import {
 	Input,
 } from "./SidebarStyle";
 import axios from "axios";
-// const PublicFolder = "http://localhost:5000/images/";
 
-const Sidebar = ({ recipes }) => {
+const Sidebar = () => {
 	const [categories, setCategories] = useState([]);
 	const [users, setUsers] = useState([]);
 	const navigate = useNavigate();

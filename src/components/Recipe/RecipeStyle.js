@@ -4,7 +4,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 500px;
+	width: 270px;
 	box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
 	border-radius: 10px;
 	margin: 0px 25px 40px 25px;
@@ -15,8 +15,8 @@ export const Container = styled.div`
 	}
 `;
 export const Img = styled.img`
-	width: 385px;
-	height: 280px;
+	width: 100%;
+	height: 200px;
 	object-fit: cover;
 	border-radius: 7px;
 `;
@@ -50,7 +50,7 @@ export const RecipeDate = styled.span`
 	font-size: 13px;
 	font-weight: 400;
 	color: #999999;
-	margin-top: 15px;
+	margin-top: 10px;
 `;
 export const RecipeDesc = styled.p`
 	font-family: "Lato", sans-serif;

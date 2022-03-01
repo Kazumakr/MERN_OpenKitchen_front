@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -7,6 +8,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
 	width: 50vw;
 	padding: 20px;
+	${mobile({ width: "300px" })}
 `;
 export const TitleContainer = styled.div`
 	display: flex;
@@ -64,6 +66,7 @@ export const UpdateButton = styled.button`
 	margin-top: 20px;
 	margin-right: 10px;
 	cursor: pointer;
+	${mobile({ width: "120px" })}
 `;
 export const DeleteButton = styled.button`
 	width: 150px;
@@ -74,9 +77,20 @@ export const DeleteButton = styled.button`
 	padding: 10px;
 	margin-top: 20px;
 	cursor: pointer;
+	${mobile({ width: "120px" })}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	align-self: flex-end;
+	${mobile({ alignSelf: "center" })}
+`;
+
+export const Textarea = styled.textarea`
+	color: gray;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 50px;
+	border: none;
+	border-bottom: 1px solid lightgray;
 `;

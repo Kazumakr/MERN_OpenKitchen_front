@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../../context/Context";
 import {
 	Container,
@@ -11,13 +11,13 @@ import {
 	NavLink,
 	Username,
 	UserContainer,
+	HamburgerContainer,
+	MobileNavList,
 } from "./NavbarStyle";
 
 const Navbar = () => {
 	const { user, dispatch } = useContext(Context);
-
-	// const PublicFolder = "http://localhost:5000/images/";
-
+	const [open, setOpen] = useState(false);
 	const handleLogout = () => {
 		dispatch({ type: "LOGOUT" });
 	};
@@ -56,8 +56,6 @@ const Navbar = () => {
 								}
 								alt=""
 							/>
-						</NavLink>
-						<NavLink to="/settings">
 							<Username>User : {user.username}</Username>
 						</NavLink>
 					</UserContainer>
@@ -67,6 +65,28 @@ const Navbar = () => {
 						<NavLink to="/register">SignUp</NavLink>
 					</NavList>
 				)}
+
+				<div>
+					<HamburgerContainer open={open} onClick={() => setOpen(!open)}>
+						<div />
+						<div />
+						<div />
+					</HamburgerContainer>
+					<MobileNavList open={open} onClick={() => setOpen(!open)}>
+						<NavLink to="/">Home</NavLink>
+						<NavLink to="/about">About</NavLink>
+						<NavLink to="/contact">Contact</NavLink>
+						{user && (
+							<>
+								<NavLink to={`/userrecipe/${user._id}`}>My Recipe</NavLink>
+								<NavLink to="/addrecipe">Add Recipe</NavLink>
+								<NavLink to="/" onClick={handleLogout}>
+									Logout
+								</NavLink>
+							</>
+						)}
+					</MobileNavList>
+				</div>
 			</Right>
 		</Container>
 	);

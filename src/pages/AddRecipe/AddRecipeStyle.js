@@ -1,35 +1,42 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
 	padding-top: 50px;
 	display: flex;
 	justify-content: center;
 `;
+
+export const PageTitle = styled.h1`
+	${mobile({ fontSize: "24px" })}
+`;
 export const Img = styled.img`
-	/* margin-left: 150px; */
-	width: 50vw;
-	height: 450px;
+	width: 100%;
 	border-radius: 10px;
 	object-fit: cover;
 `;
-export const Form = styled.form``;
+export const Form = styled.form`
+	width: 650px;
+	${mobile({ width: "280px" })}
+`;
 export const FormGroup = styled.div`
-	/* margin-left: 150px; */
 	margin: 10px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 `;
 export const FormGroupCheck = styled.div`
-	/* margin-left: 150px; */
 	margin: 10px 0;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	/* align-items: flex-start; */
 `;
 export const Checkbox = styled.input`
 	margin-left: 10px;
+`;
+
+export const CategoryName = styled.span`
+	${mobile({ fontSize: "12px" })}
 `;
 
 export const Label = styled.label`
@@ -38,10 +45,11 @@ export const Label = styled.label`
 export const Input = styled.input`
 	font-size: 30px;
 	padding: 15px;
-	width: 50vw;
+	width: 100%;
+	${mobile({ padding: "7px" })}
 `;
 export const Textarea = styled.textarea`
-	width: 50vw;
+	width: 100%;
 	height: 30vh;
 	padding: 15px;
 	font-family: inherit;

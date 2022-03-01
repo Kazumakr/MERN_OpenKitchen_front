@@ -51,10 +51,10 @@ const Register = () => {
 					onChange={(event) => setPassword(event.target.value)}
 				/>
 				<Button type="submit">SignUp</Button>
+				<Link to="/login">
+					<Button>Login</Button>
+				</Link>
 			</Form>
-			<Link to="/login">
-				<Button>Login</Button>
-			</Link>
 		</Container>
 	);
 };

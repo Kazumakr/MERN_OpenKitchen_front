@@ -1,7 +1,13 @@
 import React from "react";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import { Title, SliderContent, Desc, Inner } from "../Hero/HeroStyle";
+import {
+	Title,
+	SliderContent,
+	Desc,
+	Inner,
+	Container,
+} from "../Hero/HeroStyle";
 
 const content = [
 	{
@@ -26,7 +32,7 @@ const content = [
 
 const Hero = () => {
 	return (
-		<>
+		<Container>
 			<Slider autoplay={2000} desabled={false}>
 				{content.map((item, index) => (
 					<SliderContent
@@ -43,7 +49,7 @@ const Hero = () => {
 					</SliderContent>
 				))}
 			</Slider>
-		</>
+		</Container>
 	);
 };
 
