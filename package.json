@@ -41,5 +41,9 @@
 			"last 1 safari version"
 		]
 	},
-	"proxy": "https://mern-openkitchen.herokuapp.com/api/"
+	"proxy": {
+		"/api/": {
+			"target": "https://mern-openkitchen.herokuapp.com"
+		}
+	}
 }
