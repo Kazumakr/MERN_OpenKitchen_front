@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Container, Title, Form, Label, Input, Button } from "./RegisterStyle";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
+import { axiosInstance } from "../../config";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
@@ -13,7 +14,7 @@ const Register = () => {
 		event.preventDefault();
 		setError(false);
 
-		await axios
+		await axiosInstance
 			.post("/auth/register", { username, email, password })
 			.then((res) => {
 				res.data && window.location.replace("/login");

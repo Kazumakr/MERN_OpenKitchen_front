@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import {
 	Container,
 	Title,
@@ -11,6 +11,7 @@ import {
 	Wrapper,
 	Message,
 } from "./ContactStyle";
+import { axiosInstance } from "../../config";
 
 const Contact = () => {
 	const [sent, setSent] = useState(false);
@@ -22,7 +23,7 @@ const Contact = () => {
 	const handleSend = async () => {
 		setSent(true);
 		try {
-			await axios.post("/send_mail", {
+			await axiosInstance.post("/send_mail", {
 				name,
 				email,
 				subject,

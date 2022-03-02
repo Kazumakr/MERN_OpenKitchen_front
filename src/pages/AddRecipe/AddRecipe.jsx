@@ -13,9 +13,10 @@ import {
 	Checkbox,
 	CategoryName,
 } from "./AddRecipeStyle";
-import axios from "axios";
+
 import { BsPlusCircle } from "react-icons/bs";
 import { Context } from "../../context/Context";
+import { axiosInstance } from "../../config";
 const AddRecipe = () => {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -25,7 +26,7 @@ const AddRecipe = () => {
 	const { user } = useContext(Context);
 
 	useEffect(() => {
-		axios
+		axiosInstance
 			.get("/categories")
 			.then((res) => {
 				setCategories(res.data);
@@ -51,14 +52,14 @@ const AddRecipe = () => {
 			data.append("name", filename);
 			data.append("file", file);
 			newRecipe.photo = filename;
-			await axios
+			await axiosInstance
 				.post("/upload", data)
 				.then()
 				.catch((err) => {
 					console.log(err);
 				});
 		}
-		await axios
+		await axiosInstance
 			.post("/recipes", newRecipe)
 			.then((res) => {
 				window.location.replace("/recipes/" + res.data._id);

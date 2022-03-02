@@ -12,14 +12,14 @@ import {
 	CategoryLink,
 	Input,
 } from "./SidebarStyle";
-import axios from "axios";
+import { axiosInstance } from "../../config";
 
 const Sidebar = () => {
 	const [categories, setCategories] = useState([]);
 	const [users, setUsers] = useState([]);
 	const navigate = useNavigate();
 	useEffect(() => {
-		axios
+		axiosInstance
 			.get("/categories")
 			.then((res) => {
 				setCategories(res.data);
@@ -28,7 +28,7 @@ const Sidebar = () => {
 				console.log(err);
 			});
 
-		axios
+		axiosInstance
 			.get("/users")
 			.then((res) => {
 				setUsers(res.data);

@@ -30,8 +30,7 @@ import {
 	FormGroupCheck,
 	Checkbox,
 } from "./SingleRecipeStyle";
-
-const axios = require("axios");
+import { axiosInstance } from "../../config";
 
 const SingleRecipe = () => {
 	const location = useLocation();
@@ -50,7 +49,7 @@ const SingleRecipe = () => {
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
-		axios
+		axiosInstance
 			.get("/categories")
 			.then((res) => {
 				setCategories(res.data);
@@ -61,7 +60,7 @@ const SingleRecipe = () => {
 	}, []);
 
 	useEffect(() => {
-		axios
+		axiosInstance
 			.get("/recipes/" + path)
 			.then((res) => {
 				setRecipe(res.data);
@@ -75,11 +74,11 @@ const SingleRecipe = () => {
 	}, [path]);
 
 	const handleDelete = async () => {
-		await axios
+		await axiosInstance
 			.delete(`/recipes/${recipe._id}`, { data: { username: user.username } })
 			.then((res) => {
 				if (recipe.photo) {
-					axios
+					axiosInstance
 						.delete(`/image/${recipe.photo}`)
 						.then()
 						.catch((err) => {
@@ -94,7 +93,7 @@ const SingleRecipe = () => {
 	};
 
 	const handleUpdate = async () => {
-		await axios
+		await axiosInstance
 			.put(`/recipes/${recipe._id}`, {
 				username: user.username,
 				title,
@@ -111,7 +110,7 @@ const SingleRecipe = () => {
 	};
 
 	const handleComment = async () => {
-		await axios
+		await axiosInstance
 			.put(`/recipes/${recipe._id}/comments`, {
 				comment: comment,
 				username: user.username,
@@ -126,7 +125,7 @@ const SingleRecipe = () => {
 			});
 	};
 	const handleLikes = async () => {
-		await axios
+		await axiosInstance
 			.put(`/recipes/${recipe._id}/likes`, { userId: user._id })
 			.then((res) => {
 				console.log("res", res);
@@ -138,7 +137,7 @@ const SingleRecipe = () => {
 			});
 	};
 	const handleUnlikes = async () => {
-		await axios
+		await axiosInstance
 			.put(`/recipes/${recipe._id}/unlikes`, { userId: user._id })
 			.then((res) => {
 				console.log(res);

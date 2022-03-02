@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Recipes from "../../components/Recipes/Recipes";
-import axios from "axios";
 import {
 	Container,
 	UserContainer,
@@ -11,6 +10,7 @@ import {
 	Hr,
 } from "./UserRecipeStyle";
 import { useLocation } from "react-router-dom";
+import { axiosInstance } from "../../config";
 const UserRecipe = () => {
 	const location = useLocation();
 	const path = location.pathname.split("/")[2];
@@ -18,7 +18,7 @@ const UserRecipe = () => {
 	const [user, setUser] = useState([]);
 
 	useEffect(() => {
-		axios
+		axiosInstance
 			.get("/recipes/ByUserId/" + path)
 			.then((res) => {
 				setRecipes(res.data);
@@ -26,7 +26,7 @@ const UserRecipe = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-		axios
+		axiosInstance
 			.get("/users/" + path)
 			.then((res) => {
 				setUser(res.data);

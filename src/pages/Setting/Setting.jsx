@@ -17,7 +17,8 @@ import {
 } from "./SettingStyle";
 import { Context } from "../../context/Context";
 import { BsPlusCircle } from "react-icons/bs";
-import axios from "axios";
+
+import { axiosInstance } from "../../config";
 
 const Setting = () => {
 	const [file, setFile] = useState(null);
@@ -52,14 +53,14 @@ const Setting = () => {
 			data.append("name", filename);
 			data.append("file", file);
 			updatedUser.profilePicture = filename;
-			await axios
+			await axiosInstance
 				.post("/upload", data)
 				.then()
 				.catch((err) => {
 					console.log(err);
 				});
 		}
-		await axios
+		await axiosInstance
 			.put("/users/" + user._id, updatedUser)
 			.then((res) => {
 				console.log("success");
@@ -72,11 +73,11 @@ const Setting = () => {
 	};
 
 	const handleDelete = async () => {
-		await axios
+		await axiosInstance
 			.delete(`/users/${user._id}`, { data: { userId: user._id } })
 			.then((res) => {
 				if (user.profilePicture) {
-					axios
+					axiosInstance
 						.delete(`/image/${user.profilePicture}`)
 						.then()
 						.catch((err) => {
