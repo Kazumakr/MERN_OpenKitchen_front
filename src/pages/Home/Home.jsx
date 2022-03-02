@@ -12,7 +12,7 @@ const Home = () => {
 
 	useEffect(() => {
 		axios
-			.get("/recipes" + search)
+			.get("https://mern-openkitchen.herokuapp.com/api//recipes" + search)
 			.then((res) => {
 				setRecipes(res.data);
 			})
