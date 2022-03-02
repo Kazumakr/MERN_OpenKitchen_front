@@ -51,8 +51,9 @@ const Navbar = () => {
 							<Img
 								src={
 									user.profilePicture
-										? "http://localhost:5000/api/image/" + user.profilePicture
-										: "http://localhost:5000/api/image/NoImage.png"
+										? "https://mern-openkitchen.herokuapp.com/api/image/" +
+										  user.profilePicture
+										: "https://mern-openkitchen.herokuapp.com/api/image/NoImage.png"
 								}
 								alt=""
 							/>

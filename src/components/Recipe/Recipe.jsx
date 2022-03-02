@@ -18,8 +18,8 @@ const Recipe = ({ recipe }) => {
 			<Img
 				src={
 					recipe.photo
-						? "http://localhost:5000/api/image/" + recipe.photo
-						: "http://localhost:5000/api/image/NoFoodImage.jpg"
+						? "https://mern-openkitchen.herokuapp.com/api/image/" + recipe.photo
+						: "https://mern-openkitchen.herokuapp.com/api/image/NoFoodImage.jpg"
 				}
 			/>
 			<RecipeInfo>

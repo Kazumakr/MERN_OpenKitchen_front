@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -13,6 +14,7 @@ export const Container = styled.div`
 	&:hover {
 		transform: scale(1.05);
 	}
+	${mobile({ margin: "0px 10px 40px 10px" })}
 `;
 export const Img = styled.img`
 	width: 100%;

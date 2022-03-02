@@ -166,8 +166,9 @@ const SingleRecipe = () => {
 				<Img
 					src={
 						recipe.photo
-							? "http://localhost:5000/api/image/" + recipe.photo
-							: "http://localhost:5000/api/image/NoFoodImage.jpg"
+							? "https://mern-openkitchen.herokuapp.com/api/image/" +
+							  recipe.photo
+							: "https://mern-openkitchen.herokuapp.com/api/image/NoFoodImage.jpg"
 					}
 					alt=""
 				/>
@@ -250,8 +251,9 @@ const SingleRecipe = () => {
 					<UserImg
 						src={
 							user?.profilePicture
-								? "http://localhost:5000/api/image/" + user.profilePicture
-								: "http://localhost:5000/api/image/NoImage.png"
+								? "https://mern-openkitchen.herokuapp.com/api/image/" +
+								  user.profilePicture
+								: "https://mern-openkitchen.herokuapp.com/api/image/NoImage.png"
 						}
 						alt=""
 					/>
@@ -270,8 +272,9 @@ const SingleRecipe = () => {
 						<UserImg
 							src={
 								userImage
-									? "http://localhost:5000/api/image/" + userImage
-									: "http://localhost:5000/api/image/NoImage.png"
+									? "https://mern-openkitchen.herokuapp.com/api/image/" +
+									  userImage
+									: "https://mern-openkitchen.herokuapp.com/api/image/NoImage.png"
 							}
 							alt=""
 						/>
