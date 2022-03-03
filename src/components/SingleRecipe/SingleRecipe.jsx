@@ -109,7 +109,8 @@ const SingleRecipe = () => {
 			});
 	};
 
-	const handleComment = async () => {
+	const handleComment = async (event) => {
+		event.preventDefault();
 		await axiosInstance
 			.put(`/recipes/${recipe._id}/comments`, {
 				comment: comment,
@@ -262,7 +263,7 @@ const SingleRecipe = () => {
 							placeholder="Leave a comment here..."
 							onChange={(event) => setComment(event.target.value)}
 						/>
-
+						{recipe._id}
 						<CommentButton onClick={handleComment}>Comment</CommentButton>
 					</Form>
 				</CommentContainer>

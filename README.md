@@ -5,6 +5,7 @@ This project is a recipe blog for sharing cooking recipes.
 <img width="1680" alt="OpenKitchen_ScreenShot" src="https://user-images.githubusercontent.com/67501734/156523455-9b3db4f1-39e3-4a72-8b7a-749cdf08dc56.png">
 
 Project Link: [https://unruffled-jepsen-33fb63.netlify.app/]
+
 Backend : [https://github.com/Kazumakr/MERN_OpenKitchen_backend]
 
 ## Table of Contents (Optional)
@@ -60,15 +61,25 @@ I gained the knowledge that it can be used for SNS applications in the future.
 
 ## Usage
 
+### SignUp/Login
+
+### Add a new recipe
+
+### Update a recipe/ Delete a recipe
+
+### Search by keywords / category / user
+
+### Like/Comment
+
+### Update user information/ Delete a user
+
 ## License
 
 License under the [MIT License](LICENSE)
 
 ## References
 
-- [MongoDB](https://www.mongodb.com/)
-- [Express.js](https://expressjs.com/)
-- [Node.js](https://nodejs.org/)
+- [React.Js](https://reactjs.org/)
 - [Font Awesome](https://fontawesome.com)
 - [React Icons](https://react-icons.github.io/react-icons/search)
 - [Qiita](https://qiita.com)
