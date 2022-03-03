@@ -68,12 +68,19 @@ https://user-images.githubusercontent.com/67501734/156667368-8adafadd-6752-4e8a-
 
 ### Update a recipe/ Delete a recipe
 
+
 ### Search by keywords / category / user
 
+
+
 ### Like/Comment
+https://user-images.githubusercontent.com/67501734/156667604-f91d6153-7b9d-46f4-9584-0ff91c958a61.mov
 
-### Update user information/ Delete a user
+### Update user information
+https://user-images.githubusercontent.com/67501734/156667709-c02f8829-ba34-494f-b3bc-a437a0408269.mov
 
+### Delete a user
+https://user-images.githubusercontent.com/67501734/156667512-0e137353-c3b3-40bd-8c91-3ba06011acfd.mov
 ## License
 
 License under the [MIT License](LICENSE)
