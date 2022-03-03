@@ -263,7 +263,6 @@ const SingleRecipe = () => {
 							placeholder="Leave a comment here..."
 							onChange={(event) => setComment(event.target.value)}
 						/>
-						{recipe._id}
 						<CommentButton onClick={handleComment}>Comment</CommentButton>
 					</Form>
 				</CommentContainer>
