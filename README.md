@@ -62,6 +62,7 @@ I gained the knowledge that it can be used for SNS applications in the future.
 ## Usage
 
 ### SignUp/Login
+https://user-images.githubusercontent.com/67501734/156667368-8adafadd-6752-4e8a-b6bf-1c989f16864d.mov
 
 ### Add a new recipe
 
