@@ -65,13 +65,13 @@ I gained the knowledge that it can be used for SNS applications in the future.
 https://user-images.githubusercontent.com/67501734/156667368-8adafadd-6752-4e8a-b6bf-1c989f16864d.mov
 
 ### Add a new recipe
+https://user-images.githubusercontent.com/67501734/156668439-4be383db-5668-4195-a694-54bf3df2e59c.mov
 
 ### Update a recipe/ Delete a recipe
-
+https://user-images.githubusercontent.com/67501734/156668271-dbdeb6db-03d6-4b0e-bf00-823d982179dc.mov
 
 ### Search by keywords / category / user
-
-
+https://user-images.githubusercontent.com/67501734/156668013-cb66b51e-8510-4c18-a19a-a673062b8145.mov
 
 ### Like/Comment
 https://user-images.githubusercontent.com/67501734/156667604-f91d6153-7b9d-46f4-9584-0ff91c958a61.mov
