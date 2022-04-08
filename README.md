@@ -66,6 +66,7 @@ https://user-images.githubusercontent.com/67501734/156667368-8adafadd-6752-4e8a-
 
 ### Add a new recipe
 https://user-images.githubusercontent.com/67501734/156668439-4be383db-5668-4195-a694-54bf3df2e59c.mov
+![addrecipe](https://user-images.githubusercontent.com/67501734/162547015-220011e3-3504-4811-af42-be87f7b5ccbe.gif)
 
 ### Update a recipe/ Delete a recipe
 https://user-images.githubusercontent.com/67501734/156668271-dbdeb6db-03d6-4b0e-bf00-823d982179dc.mov
