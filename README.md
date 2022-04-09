@@ -62,26 +62,39 @@ I gained the knowledge that it can be used for SNS applications in the future.
 ## Usage
 
 ### SignUp/Login
-https://user-images.githubusercontent.com/67501734/156667368-8adafadd-6752-4e8a-b6bf-1c989f16864d.mov
+
+![signup_login](https://user-images.githubusercontent.com/67501734/162547249-1f493352-0b63-41bd-a70c-29155ec936d1.gif)
 
 ### Add a new recipe
-https://user-images.githubusercontent.com/67501734/156668439-4be383db-5668-4195-a694-54bf3df2e59c.mov
+
 ![addrecipe](https://user-images.githubusercontent.com/67501734/162547015-220011e3-3504-4811-af42-be87f7b5ccbe.gif)
 
-### Update a recipe/ Delete a recipe
-https://user-images.githubusercontent.com/67501734/156668271-dbdeb6db-03d6-4b0e-bf00-823d982179dc.mov
+### Update a recipe
+
+![update_recipe](https://user-images.githubusercontent.com/67501734/162549103-bb654220-4f17-41c3-a941-8c57675e4b85.gif)
+
+### Delete a recipe
+
+![delete_recipe](https://user-images.githubusercontent.com/67501734/162549099-0979da83-db0e-4753-9e03-83358e9c4c57.gif)
+
 
 ### Search by keywords / category / user
-https://user-images.githubusercontent.com/67501734/156668013-cb66b51e-8510-4c18-a19a-a673062b8145.mov
+
+![search1-min](https://user-images.githubusercontent.com/67501734/162549157-bce10112-4140-4840-9393-92e7a1bf385d.gif)
+
+![search2](https://user-images.githubusercontent.com/67501734/162549107-a1eca0c3-4e94-4276-ada3-69a9d3dc2a97.gif)
 
 ### Like/Comment
-https://user-images.githubusercontent.com/67501734/156667604-f91d6153-7b9d-46f4-9584-0ff91c958a61.mov
+![like_comment](https://user-images.githubusercontent.com/67501734/162547236-50340ce1-bf67-4c89-91ae-101941f0a0f3.gif)
+
 
 ### Update user information
-https://user-images.githubusercontent.com/67501734/156667709-c02f8829-ba34-494f-b3bc-a437a0408269.mov
+
+![update_userinfo](https://user-images.githubusercontent.com/67501734/162547255-03d4114b-263c-4c03-b68d-eff2c98f073d.gif)
 
 ### Delete a user
-https://user-images.githubusercontent.com/67501734/156667512-0e137353-c3b3-40bd-8c91-3ba06011acfd.mov
+![delte_user](https://user-images.githubusercontent.com/67501734/162547233-5ded4778-9088-4e77-9f70-c5116e2fdef5.gif)
+
 ## License
 
 License under the [MIT License](LICENSE)
